@@ -20,11 +20,15 @@ sont des opérateurs syntaxiques (servant à la création de
 sous-branches). Avec trois itérations et des angles 45 degrés, voici
 ce que ça donne :
 
-.. image:: images/lsystem1.png
+.. raw:: html
+
+   <img src="_images/lsystem1.png" />
 
 Si on ajoute ensuite l'étape de sampling (i.e. effet pseudo-LIDAR) :
 
-.. image:: images/lsystem+lidar.png
+.. raw:: html
+   
+   <img src="_images/lsystem+lidar.png" />
 
 La densité des points est ajustable, et dans cet exemple il y a
 environ 5500 points, soit à peu près la taille du jeu de données de la
@@ -36,32 +40,42 @@ que la recherche des plus proches voisins (``N``) fonctionne
 raisonnablement (ici environ 20 voisins par point, dont seulement 20%
 sont affichés, pour prévenir la fonte de mon laptop) :
 
-.. image:: images/lsystem_N.png
+.. raw:: html
+
+   <img src="_images/lsystem_N.png" />
 
 ..ce qui semble être le cas. Voyons ensuite la recherche des plus
 courts chemins (``G``).. (ici encore seulement 20% des chemins sont
 affichés) :
 
-.. image:: images/lsystem_G.png
+.. raw:: html
+
+   <img src="_images/lsystem_G.png" />
 
 On constate un premier problème : il y a une distorsion dans le graphe
 géodésique introduite par le choix (arbitraire) du point le plus près
 de la base du tronc (à gauche). On peut améliorer la situation en
 introduisant un point supplémentaire, situé "sous" l'arbre, au centre
 :
+       
+.. raw:: html
 
-.. image:: images/lsystem_G+lower_base_pt.png
+   <img src="_images/lsystem_G+lower_base_pt.png" />
 
 Si on fait la reconstruction à partir de ce graphe géodésique corrigé,
 voici ce que ça donne, en mode "squelette" (i.e. le rayon des branches
 n'est pas pris en compte) :
 
-.. image:: images/lsystem_K_too_many_centroids.png
+.. raw:: html
+
+   <img src="_images/lsystem_K_too_many_centroids.png" />
 
 La raison du trop grand nombre de branches est apparente quand on
 visualise les centroides sous-jacents :
 
-.. image:: images/lsystem_S_too_many_centroids.png
+.. raw:: html
+
+   <img src="_images/lsystem_S_too_many_centroids.png" />
 
 Il y a évidemment trop de centroides, ce qui entraîne le grand nombre
 de branches. Pour réduire leur nombre, il faut augmenter le nombre de
@@ -69,17 +83,19 @@ voisins (paramètres ``--dS``, ou ``--kS``) qui composent les sous-graphes des
 "level sets" (``S``), ce qui entraînera une plus grande connectivité, donc
 moins de sous-graphes, donc moins de centroides :
 
-.. image:: images/lsystem_S_right_nb_of_centroids.png
+.. raw:: html
+
+   <img src="_images/lsystem_S_right_nb_of_centroids.png" />
 
 ce qui entraîne un squelette plus raisonnable :
 
-.. image:: images/lsystem_K.png
+.. raw:: html
+
+   <img src="_images/lsystem_K.png" />
 
 et une reconstruction finale.. raisonnable aussi, mais nécessitant
 encore quelques améliorations :
 
-.. image:: images/lsystem_T.png
+.. raw:: html
 
-
-
-
+   <img src="_images/lsystem_T.png" />

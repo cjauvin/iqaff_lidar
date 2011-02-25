@@ -22,6 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="IQAFF/LIDAR v1.0 documentation" href="index.html" />
     <link rel="prev" title="Méthode de reconstruction géodésique d’arbres à partir de données LIDAR" href="geodesic.html" /> 
   </head>
@@ -30,11 +31,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Index général"
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="geodesic.html" title="Méthode de reconstruction géodésique d’arbres à partir de données LIDAR"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">précédent</a> |</li>
         <li><a href="index.html">IQAFF/LIDAR v1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -45,7 +46,7 @@
           <div class="body">
             
   <div class="section" id="creation-de-donnees-pseudo-lidar-a-partir-d-un-l-systeme">
-<h1>Création de données pseudo-LIDAR à partir d&#8217;un L-système<a class="headerlink" href="#creation-de-donnees-pseudo-lidar-a-partir-d-un-l-systeme" title="Permalink to this headline">¶</a></h1>
+<h1>Création de données pseudo-LIDAR à partir d&#8217;un L-système<a class="headerlink" href="#creation-de-donnees-pseudo-lidar-a-partir-d-un-l-systeme" title="Lien permanent vers ce titre">¶</a></h1>
 <p>J&#8217;ai écrit un programme qui prend une grammaire <a class="reference external" href="http://en.wikipedia.org/wiki/L-system">L-système</a> (et quelques autres
 paramètres) en entrée, et produit une représentation géométrique
 d&#8217;arbre en sortie. Toutefois, pour ce que soit utile dans notre
@@ -61,10 +62,8 @@ déviés de la surface (suivant une loi exponentielle).</p>
 sont des opérateurs syntaxiques (servant à la création de
 sous-branches). Avec trois itérations et des angles 45 degrés, voici
 ce que ça donne :</p>
-<img alt="_images/lsystem112.png" src="_images/lsystem112.png" />
-<p>Si on ajoute ensuite l&#8217;étape de sampling (i.e. effet pseudo-LIDAR) :</p>
-<img alt="_images/lsystem+lidar12.png" src="_images/lsystem+lidar12.png" />
-<p>La densité des points est ajustable, et dans cet exemple il y a
+<img src="_images/lsystem1.png" /><p>Si on ajoute ensuite l&#8217;étape de sampling (i.e. effet pseudo-LIDAR) :</p>
+<img src="_images/lsystem+lidar.png" /><p>La densité des points est ajustable, et dans cet exemple il y a
 environ 5500 points, soit à peu près la taille du jeu de données de la
 gaule.</p>
 <p>L&#8217;idée est donc de rouler l&#8217;algorithme de reconstruction sur cet arbre
@@ -72,36 +71,28 @@ artificiel, pour voir ce que ça donne. On peut premièrement vérifier
 que la recherche des plus proches voisins (<tt class="docutils literal"><span class="pre">N</span></tt>) fonctionne
 raisonnablement (ici environ 20 voisins par point, dont seulement 20%
 sont affichés, pour prévenir la fonte de mon laptop) :</p>
-<img alt="_images/lsystem_N6.png" src="_images/lsystem_N6.png" />
-<p>..ce qui semble être le cas. Voyons ensuite la recherche des plus
+<img src="_images/lsystem_N.png" /><p>..ce qui semble être le cas. Voyons ensuite la recherche des plus
 courts chemins (<tt class="docutils literal"><span class="pre">G</span></tt>).. (ici encore seulement 20% des chemins sont
 affichés) :</p>
-<img alt="_images/lsystem_G6.png" src="_images/lsystem_G6.png" />
-<p>On constate un premier problème : il y a une distorsion dans le graphe
+<img src="_images/lsystem_G.png" /><p>On constate un premier problème : il y a une distorsion dans le graphe
 géodésique introduite par le choix (arbitraire) du point le plus près
 de la base du tronc (à gauche). On peut améliorer la situation en
 introduisant un point supplémentaire, situé &#8220;sous&#8221; l&#8217;arbre, au centre
 :</p>
-<img alt="_images/lsystem_G+lower_base_pt6.png" src="_images/lsystem_G+lower_base_pt6.png" />
-<p>Si on fait la reconstruction à partir de ce graphe géodésique corrigé,
+<img src="_images/lsystem_G+lower_base_pt.png" /><p>Si on fait la reconstruction à partir de ce graphe géodésique corrigé,
 voici ce que ça donne, en mode &#8220;squelette&#8221; (i.e. le rayon des branches
 n&#8217;est pas pris en compte) :</p>
-<img alt="_images/lsystem_K_too_many_centroids6.png" src="_images/lsystem_K_too_many_centroids6.png" />
-<p>La raison du trop grand nombre de branches est apparente quand on
+<img src="_images/lsystem_K_too_many_centroids.png" /><p>La raison du trop grand nombre de branches est apparente quand on
 visualise les centroides sous-jacents :</p>
-<img alt="_images/lsystem_S_too_many_centroids6.png" src="_images/lsystem_S_too_many_centroids6.png" />
-<p>Il y a évidemment trop de centroides, ce qui entraîne le grand nombre
+<img src="_images/lsystem_S_too_many_centroids.png" /><p>Il y a évidemment trop de centroides, ce qui entraîne le grand nombre
 de branches. Pour réduire leur nombre, il faut augmenter le nombre de
 voisins (paramètres <tt class="docutils literal"><span class="pre">--dS</span></tt>, ou <tt class="docutils literal"><span class="pre">--kS</span></tt>) qui composent les sous-graphes des
 &#8220;level sets&#8221; (<tt class="docutils literal"><span class="pre">S</span></tt>), ce qui entraînera une plus grande connectivité, donc
 moins de sous-graphes, donc moins de centroides :</p>
-<img alt="_images/lsystem_S_right_nb_of_centroids5.png" src="_images/lsystem_S_right_nb_of_centroids5.png" />
-<p>ce qui entraîne un squelette plus raisonnable :</p>
-<img alt="_images/lsystem_K6.png" src="_images/lsystem_K6.png" />
-<p>et une reconstruction finale.. raisonnable aussi, mais nécessitant
+<img src="_images/lsystem_S_right_nb_of_centroids.png" /><p>ce qui entraîne un squelette plus raisonnable :</p>
+<img src="_images/lsystem_K.png" /><p>et une reconstruction finale.. raisonnable aussi, mais nécessitant
 encore quelques améliorations :</p>
-<img alt="_images/lsystem_T6.png" src="_images/lsystem_T6.png" />
-</div>
+<img src="_images/lsystem_T.png" /></div>
 
 
           </div>
@@ -109,16 +100,16 @@ encore quelques améliorations :</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
+  <h4>Sujet précédent</h4>
   <p class="topless"><a href="geodesic.html"
-                        title="previous chapter">Méthode de reconstruction géodésique d&#8217;arbres à partir de données LIDAR</a></p>
-  <h3>This Page</h3>
+                        title="Chapitre précédent">Méthode de reconstruction géodésique d&#8217;arbres à partir de données LIDAR</a></p>
+  <h3>Cette page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/lsystem.txt"
-           rel="nofollow">Show Source</a></li>
+           rel="nofollow">Montrer la source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
+  <h3>Recherche rapide</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
@@ -138,17 +129,17 @@ encore quelques améliorations :</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Index général"
              >index</a></li>
         <li class="right" >
           <a href="geodesic.html" title="Méthode de reconstruction géodésique d’arbres à partir de données LIDAR"
-             >previous</a> |</li>
+             >précédent</a> |</li>
         <li><a href="index.html">IQAFF/LIDAR v1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Christian Jauvin.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Créé avec <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>
