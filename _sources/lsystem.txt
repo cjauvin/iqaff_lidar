@@ -1,20 +1,21 @@
 Création de données pseudo-LIDAR à partir d'un L-système
 ========================================================
 
-J'ai écrit un programme qui prend une grammaire L-système (et quelques
-autres paramètres) en entrée, et produit une représentation
-géométrique d'arbre en sortie. Toutefois, pour ce que soit utile dans
-notre contexte, j'ai dû ajouter une composante supplémentaire : des
-points sont samplés à la surface des cylindres correspondant aux
-segments de branche, et pour mieux imiter l'effet du LIDAR, ils sont
-légèrement déviés de la surface (suivant une loi exponentielle).
+J'ai écrit un programme qui prend une grammaire `L-système
+<http://en.wikipedia.org/wiki/L-system>`_ (et quelques autres
+paramètres) en entrée, et produit une représentation géométrique
+d'arbre en sortie. Toutefois, pour ce que soit utile dans notre
+contexte, j'ai dû ajouter une composante supplémentaire : des points
+sont samplés à la surface des cylindres correspondant aux segments de
+branche, et pour mieux imiter l'effet du LIDAR, ils sont légèrement
+déviés de la surface (suivant une loi exponentielle).
 
 Ma première expérience est avec une grammaire très simple::
 
    A -> F[+A][-A][^A][vA]
 
 où ``A`` est une variable, ``F`` correspond à la création d'une branche,
-`+`, `-`, etc.  des opérateurs de changement de direction, et ``[]``
+``+``, ``-``, etc.  des opérateurs de changement de direction, et ``[]``
 sont des opérateurs syntaxiques (servant à la création de
 sous-branches). Avec trois itérations et des angles 45 degrés, voici
 ce que ça donne :
