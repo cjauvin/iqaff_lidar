@@ -96,7 +96,7 @@ facteur de tolérance de l&#8217;algorithme de simplification
 (<a class="reference external" href="http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Douglas-Peucker</a>),
 <tt class="docutils literal"><span class="pre">--tL</span></tt>, qu&#8217;on augmente à 0.02 (i.e. toutes les déviations de moins
 de 2 cm seront ignorées):</p>
-<div class="highlight-python"><pre>python geodesic_tree_reconstruction.py data/simple.asc --aP 0 --qG 10 --dL 0.3 --tL 0.25 --show_S --show_L simplified</pre>
+<div class="highlight-python"><pre>python geodesic_tree_reconstruction.py data/simple.asc --aP 0 --qG 10 --dL 0.3 --tL 0.02 --show_S --show_L simplified</pre>
 </div>
 <img src="_images/simple/Lsimplified2.png" /><p>On peut finalement comparer la distribution du nombre de branches par
 longueur (dont on aura arrondi les valeurs aux dixièmes avec le
