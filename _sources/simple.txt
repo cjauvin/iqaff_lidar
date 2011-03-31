@@ -55,10 +55,10 @@ processus de réduction (``--show_L both``)::
    <img src="_images/simple/Lboth1.png" />
 
 on constate qu'elle ne semble pas avoir été suffisante, car certains
-embranchements sont un peu "en retard". On peut ajuster ``--dL``, la
-distance maximale pour une réduction (i.e. avec une valeur de 0.3, un
-embranchement/centroide ne pourra pas être réduit d'une distance de
-plus de 0.3 m vers le bas)::
+embranchements sont un peu "en retard". Pour un meilleur résultat, on
+peut ajuster ``--dL``, la distance maximale pour une réduction
+(i.e. avec une valeur de 0.3, un embranchement/centroide ne pourra pas
+être réduit d'une distance de plus de 0.3 m vers le bas)::
 
     python geodesic_tree_reconstruction.py data/simple.asc --aP 0 --qG 10 --dL 0.3 --show_S --show_L both
 
@@ -66,8 +66,8 @@ plus de 0.3 m vers le bas)::
    
    <img src="_images/simple/Lboth2.png" />
 
-On peut visualiser la `simplification` du graphe (i.e. décomposition
-en segments droits)::
+On peut ensuite visualiser la `simplification` du graphe
+(i.e. décomposition en segments droits)::
 
     python geodesic_tree_reconstruction.py data/simple.asc --aP 0 --qG 10 --dL 0.3 --show_S --show_L simplified
 
