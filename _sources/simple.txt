@@ -76,8 +76,9 @@ On peut ensuite visualiser la `simplification` du graphe
    <img src="_images/simple/Lsimplified1.png" />
 
 On note cependant que certains segments n'ont pas été correctement
-identifiés. On peut corriger ceci avec le facteur de tolérance de
-l'algorithme de simplification (`Douglas-Peucker
+identifiés (i.e. il y en a trop). On peut corriger ceci avec le
+facteur de tolérance de l'algorithme de simplification
+(`Douglas-Peucker
 <http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm>`_),
 ``--tL``, qu'on augmente à 0.02 (i.e. toutes les déviations de moins
 de 2 cm seront ignorées)::
