@@ -93,10 +93,10 @@ longueur (dont on aura arrondi les valeurs aux dixièmes avec le
 paramètre ``--branch_len_rounding 1`` pour obtenir une aggrégation
 raisonnable) avec celle du modèle artificiel::
 
-   modèle: {0.4875: 4, 1.2375: 1}
-   reconstruction: {0.5: 4, 1.2: 1}
+   modèle:         {0.4875: 4, 1.2375: 1}
+   reconstruction: {0.5: 4,    1.2: 1}
 
-pour constater qu'on est pas si loin.. ce qui n'est évidemment pas
+pour constater qu'on arrive pas si loin.. ce qui n'est évidemment pas
 très spectaculaire avec un exemple aussi simple! Il reste bien sûr par
 contre à quantifier l'écart entre les deux distributions.
 
