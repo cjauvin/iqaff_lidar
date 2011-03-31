@@ -11,7 +11,7 @@ itérations::
    
    <img src="_images/simple/simple.png" />
 
-Faisons ensuite un sampling de la surface de ce modèle avec une
+On fait ensuite un sampling de la surface de ce modèle, avec une
 densité de 20000 points par unité de surface (paramètre
 ``--P_density``) et des petits écarts suivant une loi exponentielle de
 `scale` 0.001 (paramètre ``--exp_scale``), pour produire un nuage
