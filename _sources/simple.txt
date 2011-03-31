@@ -1,5 +1,5 @@
-Procédure complète avec un modèle pseudo-LIDAR simple
-=====================================================
+Reconstruction d'un modèle pseudo-LIDAR simple
+==============================================
 
 On définit tout d'abord un modèle pseudo-LIDAR simple, basé sur une
 des grammaires qu'a proposées Sylvain, mais avec seulement deux
