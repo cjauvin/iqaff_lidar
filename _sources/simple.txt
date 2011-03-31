@@ -56,7 +56,7 @@ processus de réduction (``--show_L both``)::
 
 on constate qu'elle ne semble pas avoir été suffisante, car certains
 embranchements sont un peu "en retard". Pour un meilleur résultat, on
-peut ajuster ``--dL``, la distance maximale pour une réduction
+peut augmenter ``--dL``, la distance maximale pour une réduction
 (i.e. avec une valeur de 0.3, un embranchement/centroide ne pourra pas
 être réduit d'une distance de plus de 0.3 m vers le bas)::
 
